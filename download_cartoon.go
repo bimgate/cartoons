@@ -2,20 +2,16 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
-
-	"net/http"
-	"strconv"
-
 	"io"
-
+	"io/ioutil"
+	"net/http"
 	"os"
-	// "strings"
+	"strconv"
 )
 
 var y int = 1
 
-func get_dilbert() {
+func main() {
 
 	for i := 160000; i < 170000; i++ {
 
@@ -75,8 +71,4 @@ func get_dilbert() {
 		}
 	next_number:
 	}
-}
-
-func main() {
-	get_dilbert()
 }
