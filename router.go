@@ -13,7 +13,7 @@ func NewRouter() *mux.Router {
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
 
-		handler = http.FileServer(http.Dir("./"))
+		//handler = http.FileServer(http.Dir("./")) OVDE TREBA PORADITI
 
 		router.
 			Methods(route.Method).
