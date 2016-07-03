@@ -14,7 +14,7 @@ func main() {
 	fmt.Printf("listening on %s...", bind)
 	err := http.ListenAndServe(bind, router)
 
-	http.ListenAndServe(bind, http.FileServer(http.Dir("./")))
+	http.ListenAndServe(bind, http.FileServer(http.Dir("/")))
 
 	if err != nil {
 		panic(err)
