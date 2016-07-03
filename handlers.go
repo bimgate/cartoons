@@ -103,8 +103,8 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 }
 
 func FileServer(w http.ResponseWriter, r *http.Request) {
-	http.Dir("./")
-	http.ListenAndServe("OPENSHIFT_GO_PORT", nil)
+	http.FileServer(http.Dir("./"))
+	//http.ListenAndServe("OPENSHIFT_GO_PORT", nil)
 }
 
 func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
