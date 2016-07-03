@@ -7,13 +7,19 @@ import (
 )
 
 func NewRouter() *mux.Router {
+
+	//////////////////////
+
+	fs := http.FileServer(http.Dir("static"))
+
+	//handler = http.FileServer(http.Dir("./")) OVDE TREBA PORADITI
+	////////////////////////////////
+
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		var handler http.Handler
-		handler = route.HandlerFunc(http.FileServer(http.Dir("./")))
+		handler = route.HandlerFunc("/", fs)
 		handler = Logger(handler, route.Name)
-
-		//handler = http.FileServer(http.Dir("./")) OVDE TREBA PORADITI
 
 		router.
 			Methods(route.Method).
