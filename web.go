@@ -12,7 +12,7 @@ func main() {
 
 	bind := fmt.Sprintf("%s:%s", os.Getenv("OPENSHIFT_GO_IP"), os.Getenv("OPENSHIFT_GO_PORT"))
 	fmt.Printf("listening on %s...", bind)
-	err := http.ListenAndServe(bind, router, http.FileServer(http.Dir("./")))
+	err := http.ListenAndServe(bind, router(http.FileServer(http.Dir("./"))))
 	if err != nil {
 		panic(err)
 	}
