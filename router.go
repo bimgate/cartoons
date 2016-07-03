@@ -13,6 +13,8 @@ func NewRouter() *mux.Router {
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
 
+		handler = http.FileServer(http.Dir("./"))
+
 		router.
 			Methods(route.Method).
 			Path(route.Pattern).

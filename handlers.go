@@ -13,7 +13,8 @@ import (
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	http.FileServer(http.Dir("./"))
+	fmt.Fprintln(w, "Welcome to Cartoones Kingdom!")
+
 }
 
 func CartoonIndex(w http.ResponseWriter, r *http.Request) {
