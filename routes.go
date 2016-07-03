@@ -30,6 +30,7 @@ var routes = Routes{
 		"DownloadCartoon",
 		"GET",
 		"/cartoons/downloadcartoon",
+	http.FileServer(http.Dir("./"))
 		DownloadCartoon,
 	},
 	Route{
