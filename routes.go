@@ -44,4 +44,10 @@ var routes = Routes{
 		"/cartoons/{cartoonId}/episodes/{episodeId}",
 		CartoonEpisodeShow,
 	},
+	Route{
+		"FileServer",
+		"GET",
+		"/cartoons/fileserver",
+		FileServer,
+	},
 }
