@@ -11,7 +11,7 @@ import (
 
 var y int = 1
 
-func main() {
+func get_dilbert() {
 
 	for i := 160000; i < 170000; i++ {
 
