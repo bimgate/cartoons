@@ -25,13 +25,13 @@ var routes = Routes{
 		"GET",
 		"/cartoons",
 		CartoonIndex,
-	}, /*
-		Route{
-			"CartoonShow",
-			"GET",
-			"/cartoons/{cartoonId}",
-			CartoonShow,
-		},*/
+	},
+	Route{
+		"DownloadCartoon",
+		"GET",
+		"/cartoons/{cartoonId}",
+		DownloadCartoon,
+	},
 	Route{
 		"CartoonEpisodesIndex",
 		"GET",

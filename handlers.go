@@ -33,13 +33,13 @@ func CartoonEpisodesIndex(w http.ResponseWriter, r *http.Request) {
 
 }
 
-/*
-func CartoonShow(w http.ResponseWriter, r *http.Request) {
-	vars := mux.Vars(r)
+func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
+	fmt.Print("waljda skida")
+	/*vars := mux.Vars(r)
 	cartoonId := vars["cartoonId"]
-	fmt.Fprintln(w, "Cartoon show:", cartoonId)
+	fmt.Fprintln(w, "Cartoon show:", cartoonId) */
 }
-*/
+
 func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	episodeId := vars["episodeId"]
