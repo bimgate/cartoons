@@ -18,7 +18,7 @@ func NewRouter() *mux.Router {
 
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
-		if route == "/fileserver" {
+		if route == FileServer {
 			handler = fs
 		}
 		router.
