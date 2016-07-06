@@ -9,7 +9,7 @@ type Route struct {
 	Method      string
 	Pattern     string
 	HandlerFunc http.HandlerFunc
-	FileServer  http.FileServer
+	FileServert http.FileServer
 }
 
 type Routes []Route
