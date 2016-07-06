@@ -103,12 +103,6 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 
 }
 
-func FileServer(w http.ResponseWriter, r *http.Request) {
-	//w.WriteHeader(http.StatusOK)
-	http.FileServer(http.Dir("./"))
-
-}
-
 func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	episodeId := vars["episodeId"]
