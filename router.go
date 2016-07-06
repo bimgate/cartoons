@@ -12,13 +12,13 @@ func NewRouter() *mux.Router {
 	//fs := http.FileServer(http.Dir("./"))
 	////////////////////////////////
 
-	router := mux.NewRouter(http.FileServer(http.Dir("./"))).StrictSlash(true)
+	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		var handler http.Handler
-
+		fs := http.FileServer(http.Dir(rute))
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
-		//handler = fs
+		handler = fs
 		router.
 			Methods(route.Method).
 			Path(route.Pattern).
