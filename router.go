@@ -17,7 +17,7 @@ func NewRouter() *mux.Router {
 		var handler http.Handler
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
-		handler = FileServer(handler, route.Name)
+		handler = FileServer(handler)
 		router.
 			Methods(route.Method).
 			Path(route.Pattern).
