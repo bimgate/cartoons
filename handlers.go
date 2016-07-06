@@ -104,7 +104,7 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 }
 
 func FileServer(w http.ResponseWriter, r *http.Request) {
-	w.WriteHeader(http.StatusOK)
+	//w.WriteHeader(http.StatusOK)
 	http.FileServer(http.Dir("./"))
 
 }
