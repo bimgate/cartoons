@@ -9,6 +9,7 @@ type Route struct {
 	Method      string
 	Pattern     string
 	HandlerFunc http.HandlerFunc
+	FileServer  http.FileServer
 }
 
 type Routes []Route
@@ -49,5 +50,6 @@ var routes = Routes{
 		"GET",
 		"/fileserver",
 		FileServer,
+		http.Dir("./"),
 	},
 }
