@@ -9,7 +9,7 @@ import (
 func NewRouter() *mux.Router {
 
 	//////////////////////
-	fs = http.FileServer(http.Dir("./"))
+	fs := http.FileServer(http.Dir("./"))
 	////////////////////////////////
 
 	router := mux.NewRouter().StrictSlash(true)
