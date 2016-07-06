@@ -9,16 +9,18 @@ import (
 func NewRouter() *mux.Router {
 
 	//////////////////////
-	//fs := http.FileServer(http.Dir("./"))
+	fs := http.FileServer(http.Dir("./"))
 	////////////////////////////////
 
 	router := mux.NewRouter().StrictSlash(true)
 	for _, route := range routes {
 		var handler http.Handler
-		fs := http.FileServer(route)
+
 		handler = route.HandlerFunc
 		handler = Logger(handler, route.Name)
-		handler = fs
+		if route == "/fileserver" {
+			handler = fs
+		}
 		router.
 			Methods(route.Method).
 			Path(route.Pattern).
