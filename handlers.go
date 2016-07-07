@@ -110,6 +110,6 @@ func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 }
 
 func TestDill(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintln(w, "/test_dill.png")
+	//fmt.Fprintln(w, "/test_dill.png")
 
 }
