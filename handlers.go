@@ -61,10 +61,10 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 			file_path := "/static/%v"
 			f_path := fmt.Sprintf(file_path, y)
 
-			file_name := strconv.Itoa(f_path)
+			//file_name := strconv.Itoa(f_path)
 
 			y++
-			file, err := os.Create(file_name)
+			file, err := os.Create(f_path)
 
 			if err != nil {
 				fmt.Println(err)
