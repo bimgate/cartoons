@@ -108,3 +108,7 @@ func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	episodeId := vars["episodeId"]
 	fmt.Fprintln(w, "Episode show:", episodeId)
 }
+
+func Static(w http.ResponseWriter, r *http.Request) {
+
+}
