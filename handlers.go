@@ -69,6 +69,8 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 			}
 			defer file.Close()
 
+			file.WriteString("static/")
+
 			check := http.Client{
 				CheckRedirect: func(r *http.Request, via []*http.Request) error {
 					r.URL.Opaque = r.URL.Path
