@@ -47,7 +47,7 @@ var routes = Routes{
 	Route{
 		"static",
 		"GET",
-		"static",
+		"/static",
 		Static,
 	},
 }
