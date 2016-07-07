@@ -29,7 +29,7 @@ var routes = Routes{
 	Route{
 		"DownloadCartoon",
 		"GET",
-		"/cartoons/static",
+		"/cartoons/static/",
 		DownloadCartoon,
 	},
 	Route{
