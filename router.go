@@ -16,7 +16,7 @@ func NewRouter() *mux.Router {
 	router := mux.NewRouter().StrictSlash(true)
 	//router.Handle("/", http.FileServer(http.Dir("./")))
 	router.PathPrefix("/").Handler(http.FileServer(http.Dir("./")))
-	http.Handle("/", r)
+	http.Handle("/", router)
 	for _, route := range routes {
 		var handler http.Handler
 
