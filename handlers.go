@@ -58,7 +58,7 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 
 			//bolt
 
-			file_name := strconv.Itoa(y)
+			file_name := strconv.Itoa("/static", y)
 
 			y++
 			file, err := os.Create(file_name)
