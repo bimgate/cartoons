@@ -108,3 +108,8 @@ func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	episodeId := vars["episodeId"]
 	fmt.Fprintln(w, "Episode show:", episodeId)
 }
+
+func TestDill(w http.ResponseWriter, r *http.Request) {
+	//fmt.Fprintln(w, "Welcome to Cartoones Kingdom!")
+
+}
