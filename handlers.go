@@ -58,7 +58,7 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 
 			//bolt
 
-			file_path := "cartoons/static/%v"
+			file_path := "./static/%v"
 			f_path := fmt.Sprintf(file_path, y)
 
 			//file_name := strconv.Itoa(f_path)
