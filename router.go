@@ -16,7 +16,7 @@ func NewRouter() *mux.Router {
 	*/
 
 	static := http.FileServer(http.Dir("./"))
-	router.PathPrefix("/static/").Handler(static)
+	router.PathPrefix("/static/dilbert/").Handler(static)
 
 	for _, route := range routes {
 		var handler http.Handler
