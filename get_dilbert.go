@@ -27,7 +27,7 @@ func get_dilbert() {
 
 			//FileServer
 
-			file_path := "./static/dilbert/%v"
+			file_path := "/static/dilbert/%v"
 			f_path := fmt.Sprintf(file_path, y)
 
 			y++
