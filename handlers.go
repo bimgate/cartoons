@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"net/http"
 	"os"
+	//"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -44,6 +45,8 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 		rawURL := "http://cdn.ttgtmedia.com/rms/computerweekly/dt%v.png"
 		url := fmt.Sprintf(rawURL, i)
 
+		//fmt.Println(url)
+
 		resp, _ := http.Get(url)
 
 		page, _ := ioutil.ReadAll(resp.Body)
@@ -51,12 +54,14 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 		if len(page) < 400 {
 			goto next_number
 		} else {
-			fmt.Println(url) //for fileServer
+			fmt.Println(url) //for bolt
 
-			//FileServer
+			//bolt
 
-			file_path := "./static/%v"
+			file_path := "cartoons/static/%v"
 			f_path := fmt.Sprintf(file_path, y)
+
+			//file_name := strconv.Itoa(f_path)
 
 			y++
 			file, err := os.Create(f_path)
@@ -66,6 +71,8 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 				panic(err)
 			}
 			defer file.Close()
+
+			//file.WriteString("static/")
 
 			check := http.Client{
 				CheckRedirect: func(r *http.Request, via []*http.Request) error {
@@ -91,11 +98,13 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 
 			fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
-			//FileServer
+			//bolt
 
 		}
 	next_number:
 	}
+
+	//
 
 }
 
