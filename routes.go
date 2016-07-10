@@ -45,7 +45,7 @@ var routes = Routes{
 		CartoonEpisodeShow,
 	},
 	Route{
-		"staticDilbert",
+		"StaticDilbert",
 		"GET",
 		"/static/dilbert",
 		StaticDilbert,
