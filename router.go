@@ -10,10 +10,10 @@ func NewRouter() *mux.Router {
 
 	router := mux.NewRouter().StrictSlash(true)
 
-	//static := http.FileServer(http.Dir("./"))
-	u := http.Handle("/dilbert/", http.StripPrefix("/dilbert/", http.FileServer(http.Dir("./static"))))
-	//router.PathPrefix("/static").Handler(static)
-	router.u
+	static := http.FileServer(http.Dir("./static"))
+
+	router.PathPrefix("/dilbert").Handler(static)
+
 	for _, route := range routes {
 		var handler http.Handler
 
