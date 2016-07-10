@@ -105,6 +105,6 @@ func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintln(w, "Episode show:", episodeId)
 }
 
-func Static(w http.ResponseWriter, r *http.Request) {
+func StaticDilbert(w http.ResponseWriter, r *http.Request) {
 
 }
