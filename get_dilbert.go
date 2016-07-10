@@ -9,16 +9,13 @@ import (
 	"strconv"
 )
 
-var y int = 1
-
 func get_dilbert() {
 
+	var y int = 1
 	for i := 160000; i < 170000; i++ {
 
 		rawURL := "http://cdn.ttgtmedia.com/rms/computerweekly/dt%v.png"
 		url := fmt.Sprintf(rawURL, i)
-
-		//fmt.Println(url)
 
 		resp, _ := http.Get(url)
 
@@ -27,14 +24,15 @@ func get_dilbert() {
 		if len(page) < 400 {
 			goto next_number
 		} else {
-			fmt.Println(url) //for bolt
+			fmt.Println(url) //for fileServer
 
-			//bolt
+			//FileServer
 
-			file_name := strconv.Itoa(y)
+			file_path := "./static/dilbert%v"
+			f_path := fmt.Sprintf(file_path, y)
 
 			y++
-			file, err := os.Create(file_name)
+			file, err := os.Create(f_path)
 
 			if err != nil {
 				fmt.Println(err)
@@ -66,7 +64,7 @@ func get_dilbert() {
 
 			fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
-			//bolt
+			//FileServer
 
 		}
 	next_number:
