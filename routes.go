@@ -47,7 +47,7 @@ var routes = Routes{
 	Route{
 		"StaticDilbert",
 		"GET",
-		"/static/dilbert",
+		"/static",
 		StaticDilbert,
 	},
 }
