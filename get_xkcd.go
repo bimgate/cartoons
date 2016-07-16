@@ -21,7 +21,7 @@ func get_xkcd() {
 
 		url := "http://xkcd.com/%v/"
 
-		page_url := fmt.Sprintf(rawURL, i)
+		page_url := fmt.Sprintf(url, i)
 
 		tab_resp, _ := http.Get(page_url)
 		tab_page, _ := ioutil.ReadAll(tab_resp.Body)
