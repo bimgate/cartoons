@@ -4,8 +4,13 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
+	"regexp"
+
+	"github.com/moovweb/gokogiri"
+	"github.com/moovweb/gokogiri/xpath"
 )
 
 func get_xkcd() {
