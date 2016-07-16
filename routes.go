@@ -33,6 +33,12 @@ var routes = Routes{
 		DownloadCartoon,
 	},
 	Route{
+		"DownloadXkcd",
+		"GET",
+		"/cartoons/downloadxkcd",
+		DownloadXkcd,
+	},
+	Route{
 		"CartoonEpisodesIndex",
 		"GET",
 		"/cartoons/{cartoonId}/episodes",

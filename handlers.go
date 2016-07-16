@@ -41,6 +41,14 @@ func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func DownloadXkcd(w http.ResponseWriter, r *http.Request) {
+	//
+	get_xkcd()
+
+	//
+
+}
+
 func CartoonEpisodeShow(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
 	episodeId := vars["episodeId"]
