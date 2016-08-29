@@ -12,11 +12,12 @@ func init() {
 	RepoCreateCartoon(Cartoon{Name: "Snoopy"})
 
 	RepoCreateCartoonEpisode(Episode{Name: "Episode_1", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/1"})
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_2", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/2"})
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_3", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/3"})
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_4", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/4"})
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_5", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/5"})
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_6", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/6"})
+	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_2", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/2"})
+	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_3", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/3"})
+	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_4", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/4"})
+	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_5", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/5"})
+	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_6", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/6"})
+
 }
 
 func RepoFindCartoon(id int) Cartoon {
@@ -47,7 +48,7 @@ func RepoCreateCartoon(c Cartoon) Cartoon {
 }
 
 func RepoCreateCartoonEpisode(e Episode) Episode {
-	currentId += 1
+	currentId += 119
 	e.Id = currentId
 	episodes = append(episodes, e)
 	return e
