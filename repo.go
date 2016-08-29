@@ -11,7 +11,7 @@ func init() {
 	RepoCreateCartoon(Cartoon{Name: "xkcd", Number_of_Episodes: 100})
 	RepoCreateCartoon(Cartoon{Name: "Snoopy"})
 
-	RepoCreateCartoonEpisode(Episode{Name: "Episode_1", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/1"})
+	RepoCreateCartoonEpisode(Episode{Name: 1, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/"})
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_2", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/2"})
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_3", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/3"})
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_4", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/4"})
@@ -48,7 +48,7 @@ func RepoCreateCartoon(c Cartoon) Cartoon {
 }
 
 func RepoCreateCartoonEpisode(e Episode) Episode {
-	currentId += 119
+	currentId += 1
 	e.Id = currentId
 	episodes = append(episodes, e)
 	return e
