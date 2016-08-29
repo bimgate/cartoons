@@ -7,8 +7,8 @@ var episodes Episodes
 
 // Give us some seed data
 func init() {
-	RepoCreateCartoon(Cartoon{Name: "Dilbert"})
-	RepoCreateCartoon(Cartoon{Name: "xkcd"})
+	RepoCreateCartoon(Cartoon{Name: "Dilbert", Number_of_Episodes: 120})
+	RepoCreateCartoon(Cartoon{Name: "xkcd", Number_of_Episodes: 100})
 	RepoCreateCartoon(Cartoon{Name: "Snoopy"})
 
 	RepoCreateCartoonEpisode(Episode{Name: "Episode_1", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/1"})
