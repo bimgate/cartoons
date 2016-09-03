@@ -28,10 +28,12 @@ func get_dilbert() {
 	// handle error
 
 	// set d to starting date and keep adding 1 day to it as long as month doesn't change
-	for d := start; d.Date() != end.Date(); d = d.AddDate(0, 0, -1) {
+	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) {
 		// do stuff with d
 
 		u := (d.Format("2006-01-02"))
+
+		fmt.Print(u)
 
 		page_url := ("http://dilbert.com/strip/" + u)
 
