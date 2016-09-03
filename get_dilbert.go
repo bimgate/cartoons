@@ -39,7 +39,6 @@ func get_dilbert() {
 		tab_page, _ := ioutil.ReadAll(tab_resp.Body)
 
 		tab_parsedPage, _ := gokogiri.ParseHtml(tab_page)
-		//img_tag := xpath.Compile("//*[@id='comic']/img")
 
 		img_tag := xpath.Compile("//*[@class='img-comic-link']/img")
 
@@ -47,18 +46,18 @@ func get_dilbert() {
 
 		str := fmt.Sprint(parsedPageSearch)
 
-		fmt.Println(str) ////////////////////////////////
+		//fmt.Println(str) ////////////////////////////////
 
 		var imgRE = regexp.MustCompile(`<img[^>]+\bsrc="([^"]+)"`)
 
 		imgs := imgRE.FindAllStringSubmatch(str, -1)
 		out := make([]string, len(imgs))
-		fmt.Println(out)
+		//fmt.Println(out)
 
 		for i := range out {
 			out[i] = imgs[i][1]
 
-			fmt.Println(out[0])
+			//fmt.Println(out[0])
 			url_dilbert_cartoon := (out[0])
 
 			response, e := http.Get(url_dilbert_cartoon)
@@ -69,10 +68,43 @@ func get_dilbert() {
 			defer response.Body.Close()
 
 			//open a file for writing
-			file, err := os.Create("/home/bimgate/img-test/D_D/" + u)
+			/////////////////////////////////////////////////////////////
+
+			file_path := "./static/dilbert/%v"
+			f_path := fmt.Sprintf(file_path, u)
+
+			file, err := os.Create(f_path)
 			if err != nil {
 				log.Fatal(err)
 			}
+
+			check := http.Client{
+				CheckRedirect: func(r *http.Request, via []*http.Request) error {
+					r.URL.Opaque = r.URL.Path
+					return nil
+				},
+			}
+
+			resp, err := check.Get(page_url) // add a filter to check redirect
+
+			if err != nil {
+				fmt.Println(err)
+				panic(err)
+			}
+			defer resp.Body.Close()
+			fmt.Println(resp.Status)
+
+			size, err := io.Copy(file, resp.Body)
+
+			if err != nil {
+				panic(err)
+			}
+
+			fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
+
+			//FileServer
+
+			//////////////////////////////////////////////////////////////////
 			// Use io.Copy to just dump the response body to the file. This supports huge files
 			_, err = io.Copy(file, response.Body)
 			if err != nil {
