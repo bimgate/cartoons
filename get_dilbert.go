@@ -102,7 +102,7 @@ func get_dilbert() {
 					panic(err)
 				}
 			*/
-			fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
+			//fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
 			//FileServer
 
