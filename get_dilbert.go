@@ -28,7 +28,7 @@ func get_dilbert() {
 	// handle error
 
 	// set d to starting date and keep adding 1 day to it as long as month doesn't change
-	for d := start; d.Month() != end.Month(); d = d.AddDate(0, 0, -1) {
+	for d := start; (d.Year() != end.Year()) && (d.Month() != end.Month()); d = d.AddDate(0, 0, -1) {
 		// do stuff with d
 
 		u := (d.Format("2006-01-02"))
