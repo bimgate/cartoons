@@ -79,28 +79,28 @@ func get_dilbert() {
 			if err != nil {
 				log.Fatal(err)
 			}
-
-			check := http.Client{
-				CheckRedirect: func(r *http.Request, via []*http.Request) error {
-					r.URL.Opaque = r.URL.Path
-					return nil
-				},
-			}
 			/*
-				resp, err := check.Get(page_url) // add a filter to check redirect
-
-				if err != nil {
-					fmt.Println(err)
-					panic(err)
+				check := http.Client{
+					CheckRedirect: func(r *http.Request, via []*http.Request) error {
+						r.URL.Opaque = r.URL.Path
+						return nil
+					},
 				}
-				defer resp.Body.Close()
-				fmt.Println(resp.Status)
 
-				size, err := io.Copy(file, resp.Body)
+					resp, err := check.Get(page_url) // add a filter to check redirect
 
-				if err != nil {
-					panic(err)
-				}
+					if err != nil {
+						fmt.Println(err)
+						panic(err)
+					}
+					defer resp.Body.Close()
+					fmt.Println(resp.Status)
+
+					size, err := io.Copy(file, resp.Body)
+
+					if err != nil {
+						panic(err)
+					}
 			*/
 			//fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
