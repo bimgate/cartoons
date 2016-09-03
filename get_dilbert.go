@@ -28,7 +28,7 @@ func get_dilbert() {
 	// handle error
 
 	// set d to starting date and keep adding 1 day to it as long as month doesn't change
-	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) {
+	for d := start; d.Month() != end.Month(); d = d.AddDate(0, 0, -1) {
 		// do stuff with d
 
 		u := (d.Format("2006-01-02"))
@@ -86,22 +86,22 @@ func get_dilbert() {
 					return nil
 				},
 			}
+			/*
+				resp, err := check.Get(page_url) // add a filter to check redirect
 
-			resp, err := check.Get(page_url) // add a filter to check redirect
+				if err != nil {
+					fmt.Println(err)
+					panic(err)
+				}
+				defer resp.Body.Close()
+				fmt.Println(resp.Status)
 
-			if err != nil {
-				fmt.Println(err)
-				panic(err)
-			}
-			defer resp.Body.Close()
-			fmt.Println(resp.Status)
+				size, err := io.Copy(file, resp.Body)
 
-			size, err := io.Copy(file, resp.Body)
-
-			if err != nil {
-				panic(err)
-			}
-
+				if err != nil {
+					panic(err)
+				}
+			*/
 			fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
 			//FileServer
