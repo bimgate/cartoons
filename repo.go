@@ -54,7 +54,7 @@ func RepoFindCartoon(id int) Cartoon {
 	return Cartoon{}
 }
 
-func RepoFindCartoonEpisode(id int) {
+func RepoFindCartoonEpisode(id int) String {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
