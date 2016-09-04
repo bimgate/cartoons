@@ -32,7 +32,7 @@ func init() {
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Snoopy"})
 
-		RepoCreateCartoonEpisode(Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print)})
+		RepoCreateCartoonEpisode(Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print), Episode_share_URL: ("http://dilbert.com/strip/" + dilbert_episode_name_print)})
 		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_2", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/2"})
 		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_3", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/3"})
 		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_4", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/4"})
