@@ -1,5 +1,11 @@
 package main
 
+import (
+	"fmt"
+
+	"github.com/gernest/nutz"
+)
+
 var currentId int
 
 var cartoons Cartoons
