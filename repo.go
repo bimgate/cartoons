@@ -54,7 +54,7 @@ func RepoFindCartoon(id int) Cartoon {
 	return Cartoon{}
 }
 
-func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
+func RepoFindCartoonEpisode(id int) {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
@@ -71,7 +71,7 @@ func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
 		return dilbert_episode_name_print
 	}
 	// return empty Episode if not found
-	//return Episode{}
+	return dilbert_episode_name_print
 }
 
 func RepoCreateCartoon(c Cartoon) Cartoon {
