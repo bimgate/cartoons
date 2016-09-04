@@ -17,7 +17,7 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
-	for id {
+	for id.RepoFindCartoonEpisode() {
 
 		key := (string(i))
 
