@@ -62,6 +62,7 @@ func get_dilbert() {
 			return err
 
 		})
+		dilbert_bolt_id = dilbert_bolt_id + 1
 
 		///////////Add to Bolt DB
 		tab_resp, _ := http.Get(page_url)
@@ -111,7 +112,6 @@ func get_dilbert() {
 			fmt.Println("Success!")
 
 		}
-		dilbert_bolt_id++
 
 	}
 
