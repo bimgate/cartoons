@@ -110,6 +110,7 @@ func get_dilbert() {
 			fmt.Println("Success!")
 
 		}
+		dilbert_bolt_id++
 
 	}
 
