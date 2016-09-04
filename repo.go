@@ -11,7 +11,7 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
-
+for i := 1; i < 10, i++ {
 	dilbert_episode_name := db.Get("dilbert", i)
 
 	dilbert_episode_name_print := (string(dilbert_episode_name.Data))
@@ -30,6 +30,7 @@ func init() {
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_5", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/5"})
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_6", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/6"})
 
+}
 }
 
 func RepoFindCartoon(id int) Cartoon {
