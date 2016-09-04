@@ -23,20 +23,44 @@ func get_dilbert() {
 
 	startDate := (dayPicker.Format("2006-01-02"))
 	start, _ := time.Parse("2006-1-2", startDate)
+	// handle error
 
 	end, _ := time.Parse("2006-1-2", "2015-6-1")
 	// handle error
 
-	// set d to starting date and keep adding 1 day to it as long as month doesn't change
-	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) {
+	// set d to starting date and keep adding -1 day to it as long as Year doesn't change
+	for d := start; d.Month() != end.Month(); d = d.AddDate(0, 0, -1) { //Month() or Year()
 		// do stuff with d
-
+		dilbert_bolt_id := 1
 		u := (d.Format("2006-01-02"))
 
 		fmt.Print(u)
 
 		page_url := ("http://dilbert.com/strip/" + u)
+		///////////Add to Bolt DB
+		//Open DB
+		db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
 
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer db.Close()
+
+		key := dilbert_bolt_id
+		value := u
+
+		dilb_bucket := []byte("dilbert")
+
+		err = db.Update(func(tx *bolt.Tx) error {
+			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
+
+			err := bucket.Put([]byte(strconv.Itoa(key)), []byte(strconv.Itoa(value)))
+			fmt.Print("dbBolt Works  ", dilbert_bolt_id)
+			return err
+
+		})
+
+		///////////Add to Bolt DB
 		tab_resp, _ := http.Get(page_url)
 		tab_page, _ := ioutil.ReadAll(tab_resp.Body)
 
@@ -48,18 +72,14 @@ func get_dilbert() {
 
 		str := fmt.Sprint(parsedPageSearch)
 
-		//fmt.Println(str) ////////////////////////////////
-
 		var imgRE = regexp.MustCompile(`<img[^>]+\bsrc="([^"]+)"`)
 
 		imgs := imgRE.FindAllStringSubmatch(str, -1)
 		out := make([]string, len(imgs))
-		//fmt.Println(out)
 
 		for i := range out {
 			out[i] = imgs[i][1]
 
-			//fmt.Println(out[0])
 			url_dilbert_cartoon := (out[0])
 
 			response, e := http.Get(url_dilbert_cartoon)
@@ -70,8 +90,6 @@ func get_dilbert() {
 			defer response.Body.Close()
 
 			//open a file for writing
-			/////////////////////////////////////////////////////////////
-
 			file_path := "./static/dilbert/%v"
 			f_path := fmt.Sprintf(file_path, u)
 
@@ -79,35 +97,9 @@ func get_dilbert() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			/*
-				check := http.Client{
-					CheckRedirect: func(r *http.Request, via []*http.Request) error {
-						r.URL.Opaque = r.URL.Path
-						return nil
-					},
-				}
-
-					resp, err := check.Get(page_url) // add a filter to check redirect
-
-					if err != nil {
-						fmt.Println(err)
-						panic(err)
-					}
-					defer resp.Body.Close()
-					fmt.Println(resp.Status)
-
-					size, err := io.Copy(file, resp.Body)
-
-					if err != nil {
-						panic(err)
-					}
-			*/
-			//fmt.Printf("%s with %v bytes downloaded" /*fileName,*/, size)
 
 			//FileServer
 
-			//////////////////////////////////////////////////////////////////
-			// Use io.Copy to just dump the response body to the file. This supports huge files
 			_, err = io.Copy(file, response.Body)
 			if err != nil {
 				log.Fatal(err)
