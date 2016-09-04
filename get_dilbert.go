@@ -18,6 +18,14 @@ import (
 
 func get_dilbert() {
 
+	//Open DB
+	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
 	// set the starting date (in any way you wish)
 	year, month, day := time.Now().Date() //Curent Day
 
@@ -40,13 +48,6 @@ func get_dilbert() {
 
 		page_url := ("http://dilbert.com/strip/" + u)
 		///////////Add to Bolt DB
-		//Open DB
-		db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
-
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer db.Close()
 
 		key := dilbert_bolt_id
 		value := u
