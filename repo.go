@@ -11,7 +11,7 @@ var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
-//var dilbert_episode_name_print
+var dilbert_episode_name_print string
 
 // Give us some seed data
 func init() {
@@ -54,7 +54,7 @@ func RepoFindCartoon(id int) Cartoon {
 	return Cartoon{}
 }
 
-func RepoFindCartoonEpisode(id int) Episode {
+func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
