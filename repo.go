@@ -71,7 +71,7 @@ func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
 		return dilbert_episode_name_print
 	}
 	// return empty Episode if not found
-	return Episode{}
+	//return Episode{}
 }
 
 func RepoCreateCartoon(c Cartoon) Cartoon {
