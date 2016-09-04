@@ -16,6 +16,8 @@ import (
 	"github.com/moovweb/gokogiri/xpath"
 )
 
+var dilbert_bolt_id int = 1
+
 func get_dilbert() {
 
 	//Open DB
@@ -41,7 +43,7 @@ func get_dilbert() {
 	// set d to starting date and keep adding -1 day to it as long as Year doesn't change
 	for d := start; d.Month() != end.Month(); d = d.AddDate(0, 0, -1) { //Month() or Year()
 		// do stuff with d
-		dilbert_bolt_id := 1
+
 		u := (d.Format("2006-01-02"))
 
 		fmt.Println(u)
