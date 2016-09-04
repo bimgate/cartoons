@@ -11,8 +11,6 @@ var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
-var dilbert_episode_name_print string
-
 // Give us some seed data
 func init() {
 	/*
@@ -30,7 +28,6 @@ func init() {
 			fmt.Println(dilbert_episode_name_print)
 			///////////////////////////////////vadi iz bazu
 	*/
-
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Snoopy"})
@@ -42,6 +39,7 @@ func init() {
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_5", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/5"})
 	//	RepoCreateCartoonEpisode(Episode{Name: "Episode_6", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/6"})
 
+	//}
 }
 
 func RepoFindCartoon(id int) Cartoon {
@@ -54,8 +52,8 @@ func RepoFindCartoon(id int) Cartoon {
 	return Cartoon{}
 }
 
-func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
-	/////////////////////////////////////vadi iz bazu
+func RepoFindCartoonEpisode(id int) Episode {
+
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
 	for i := 1; i < 10; i++ {
@@ -70,8 +68,15 @@ func RepoFindCartoonEpisode(id int) dilbert_episode_name_print {
 		///////////////////////////////////vadi iz bazu
 		return dilbert_episode_name_print
 	}
+	/*
+		for _, e := range episodes {
+			if e.Id == id {
+				return e
+			}
+		}
+	*/
 	// return empty Episode if not found
-	return dilbert_episode_name_print
+	return Episode{}
 }
 
 func RepoCreateCartoon(c Cartoon) Cartoon {
