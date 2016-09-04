@@ -10,6 +10,7 @@ import (
 	"regexp"
 	"time"
 
+	"github.com/boltdb/bolt"
 	"github.com/moovweb/gokogiri"
 	"github.com/moovweb/gokogiri/xpath"
 )
