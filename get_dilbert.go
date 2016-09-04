@@ -36,7 +36,7 @@ func get_dilbert() {
 		dilbert_bolt_id := 1
 		u := (d.Format("2006-01-02"))
 
-		fmt.Print(u)
+		fmt.Println(u)
 
 		page_url := ("http://dilbert.com/strip/" + u)
 		///////////Add to Bolt DB
@@ -57,7 +57,7 @@ func get_dilbert() {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
 
 			err := bucket.Put([]byte(strconv.Itoa(key)), []byte(value))
-			fmt.Print("dbBolt Works  ", dilbert_bolt_id)
+			fmt.Println("dbBolt Works  ", dilbert_bolt_id)
 			return err
 
 		})
