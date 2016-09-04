@@ -56,7 +56,7 @@ func get_dilbert() {
 		err = db.Update(func(tx *bolt.Tx) error {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
 
-			err := bucket.Put([]byte(key), []byte(value))
+			err := bucket.Put([]byte(strconv.Itoa(key)), []byte(strconv.Itoa(value)))
 			fmt.Print("dbBolt Works  ", dilbert_bolt_id)
 			return err
 
