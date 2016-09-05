@@ -14,7 +14,7 @@ func RepoFindCartoonEpisode(id int) Episode {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
-	for _, dilbert_episode_name_print := range episodes {
+	for _, e := range episodes {
 		if e.Id == id {
 
 			key := (string(e))
@@ -25,7 +25,7 @@ func RepoFindCartoonEpisode(id int) Episode {
 
 			fmt.Println(dilbert_episode_name_print)
 			///////////////////////////////////vadi iz bazu
-			return dilbert_episode_name_print
+			return e
 		}
 
 	}
