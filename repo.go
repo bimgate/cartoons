@@ -18,7 +18,7 @@ func init() {
 
 }
 
-func init() {
+func main() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
