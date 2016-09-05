@@ -30,5 +30,5 @@ func RepoFindCartoonEpisode(id int) string {
 
 	}
 	// return empty Episode if not found
-	return Episode{}
+	return dilbert_episode_name_print
 }
