@@ -5,7 +5,7 @@ import (
 
 	"log"
 
-	"github.com/boltdb/bolt"
+	"github.com/gernest/nutz"
 )
 
 var currentId int
@@ -22,7 +22,8 @@ func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
-	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
+	databaseName := "my-database-dilbert-name.db"
+	db := nutz.NewStorage(databaseName, 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
