@@ -30,7 +30,7 @@ func init() {
 
 	db.View(func(tx *bolt.Tx) error {
 		// Assume bucket exists and has keys
-		b := tx.Bucket([]byte("MyBucket"))
+		b := tx.Bucket([]byte("dilbert"))
 
 		b.ForEach(func(k, v []byte) error {
 			fmt.Printf("key=%s, value=%s\n", k, v)
