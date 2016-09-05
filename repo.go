@@ -37,9 +37,9 @@ func init() {
 
 			RepoCreateCartoonEpisode(Episode{Name: "test-1", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
 
-			//return nil
+			return error
 		})
-		//return nil
+		return error
 	})
 
 }
