@@ -32,16 +32,14 @@ func init() {
 		// Assume bucket exists and has keys
 		b := tx.Bucket([]byte("dilbert"))
 
-		b.ForEach(func(k, v []byte) error {
+		c := b.Cursor()
+
+		for k, v := c.First(); k != nil; k, v = c.Next() {
 			fmt.Printf("key=%s, value=%s\n", k, v)
+		}
 
-			RepoCreateCartoonEpisode(Episode{Name: "test-1", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
-
-			return error
-		})
-		return error
+		return nil
 	})
-
 }
 
 func RepoCreateCartoonEpisode(e Episode) Episode {
