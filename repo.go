@@ -8,7 +8,7 @@ import (
 
 var currentId int
 var cartoons Cartoons
-var episodes Episodes
+var episodes string //Episodes
 
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
