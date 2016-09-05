@@ -8,9 +8,24 @@ import (
 
 var cartoons Cartoons
 var episodes Episodes
-var dilbert_episode_name_print string
 
-func RepoFindCartoonEpisode(id int) string {
+func init() {
+	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
+	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
+
+}
+
+func RepoFindCartoon(id int) Cartoon {
+	for _, c := range cartoons {
+		if c.Id == id {
+			return c
+		}
+	}
+	// return empty Cartoon if not found
+	return Cartoon{}
+}
+
+func RepoFindCartoonEpisode(id int) Episode {
 
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
@@ -26,10 +41,10 @@ func RepoFindCartoonEpisode(id int) string {
 
 			fmt.Println(dilbert_episode_name_print)
 			///////////////////////////////////vadi iz bazu
-			return dilbert_episode_name_print
+			return e
 		}
 
 	}
 	// return empty Episode if not found
-	return dilbert_episode_name_print
+	return Episode{}
 }
