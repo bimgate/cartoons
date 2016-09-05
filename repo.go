@@ -25,7 +25,7 @@ func RepoFindCartoonEpisode(id int) Episode {
 
 			fmt.Println(dilbert_episode_name_print)
 			///////////////////////////////////vadi iz bazu
-			return e
+			return dilbert_episode_name_print
 		}
 
 	}
