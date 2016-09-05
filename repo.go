@@ -5,7 +5,7 @@ import (
 
 	"log"
 
-	"github.com/gernest/nutz"
+	"github.com/boltdb/bolt"
 )
 
 var currentId int
@@ -22,8 +22,7 @@ func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
-	databaseName := "my-database-dilbert-name.db"
-	db := nutz.NewStorage(databaseName, 0600, nil)
+	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -31,16 +30,15 @@ func init() {
 
 	db.View(func(tx *bolt.Tx) error {
 		// Assume bucket exists and has keys
-		bucketDilbert := tx.Bucket([]byte("dilbert"))
+		b := tx.Bucket([]byte("MyBucket"))
 
-		cursorIterateOverBolt := bucketDilbert.Cursor()
-
-		for k, v := cursorIterateOverBolt.First(); k != nil; k, v = cursorIterateOverBolt.Next() {
+		b.ForEach(func(k, v []byte) error {
 			fmt.Printf("key=%s, value=%s\n", k, v)
 
-			RepoCreateCartoonEpisode(Episode{Name: "test-1", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
-		}
+			RepoCreateCartoonEpisode(Episode{Name: "test", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
 
+			return nil
+		})
 		return nil
 	})
 
