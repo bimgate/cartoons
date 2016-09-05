@@ -14,20 +14,7 @@ var episodes Episodes
 // Give us some seed data
 func init() {
 
-	/////////////////////////////////////vadi iz bazu
-	databaseName := "my-database-dilbert-name.db"
-	db := nutz.NewStorage(databaseName, 0600, nil)
-	for id {
-
-		key := (string(i))
-
-		dilbert_episode_name := db.Get("dilbert", key)
-
-		dilbert_episode_name_print := (string(dilbert_episode_name.Data))
-
-		fmt.Println(dilbert_episode_name_print)
-		///////////////////////////////////vadi iz bazu
-
+	
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Snoopy"})
