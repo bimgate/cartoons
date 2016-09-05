@@ -6,6 +6,7 @@ import (
 	"github.com/gernest/nutz"
 )
 
+var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
