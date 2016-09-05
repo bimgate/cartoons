@@ -14,6 +14,25 @@ func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 
+	/////////////////////////////////////vadi iz bazu
+	databaseName := "my-database-dilbert-name.db"
+	db := nutz.NewStorage(databaseName, 0600, nil)
+	for i, e := range episodes {
+		if e.Id == id {
+
+			key := (string(i))
+
+			dilbert_episode_name := db.Get("dilbert", key)
+
+			dilbert_episode_name_print := (string(dilbert_episode_name.Data))
+
+			fmt.Println(dilbert_episode_name_print)
+			//////////////////////////////////////////////////
+			RepoCreateCartoonEpisode(Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print), Episode_share_URL: ("http://dilbert.com/strip/" + dilbert_episode_name_print)})
+		}
+		///////////////////////////////////vadi iz bazu
+
+	}
 }
 
 func RepoFindCartoon(id int) Cartoon {
@@ -31,28 +50,4 @@ func RepoCreateCartoon(c Cartoon) Cartoon {
 	c.Id = currentId
 	cartoons = append(cartoons, c)
 	return c
-}
-
-func RepoFindCartoonEpisode(id int) Episode {
-
-	/////////////////////////////////////vadi iz bazu
-	databaseName := "my-database-dilbert-name.db"
-	db := nutz.NewStorage(databaseName, 0600, nil)
-	for i, e := range episodes {
-		if e.Id == id {
-
-			key := (string(i))
-
-			dilbert_episode_name := db.Get("dilbert", key)
-
-			dilbert_episode_name_print := (string(dilbert_episode_name.Data))
-
-			fmt.Println(dilbert_episode_name_print)
-			///////////////////////////////////vadi iz bazu
-			return e
-		}
-
-	}
-	// return empty Episode if not found
-	return Episode{}
 }
