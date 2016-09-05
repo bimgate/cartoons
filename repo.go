@@ -25,15 +25,9 @@ func init() {
 	//Open DB
 
 	db.View(func(tx *bolt.Tx) error {
-		// Assume bucket exists and has keys
-		b := tx.Bucket([]byte("dilbert"))
-
-		c := b.Cursor()
-
-		for k, v := c.First(); k != nil; k, v = c.Next() {
-			fmt.Printf("key=%s, value=%s\n", k, v)
-		}
-
+		b := tx.Bucket([]byte("MyBucket"))
+		v := b.Get([]byte(1))
+		fmt.Printf("The answer is: %s\n", v)
 		return nil
 	})
 }
