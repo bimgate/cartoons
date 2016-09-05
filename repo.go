@@ -6,11 +6,10 @@ import (
 	"github.com/gernest/nutz"
 )
 
-var currentId int
+//var currentId int
 
 var cartoons Cartoons
 var episodes Episodes
-var id int
 
 // Give us some seed data
 func init() {
@@ -34,11 +33,6 @@ func init() {
 		RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Snoopy"})
 
 		RepoCreateCartoonEpisode(Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print), Episode_share_URL: ("http://dilbert.com/strip/" + dilbert_episode_name_print)})
-		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_2", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/2"})
-		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_3", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/3"})
-		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_4", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/4"})
-		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_5", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/5"})
-		//	RepoCreateCartoonEpisode(Episode{Name: "Episode_6", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/6"})
 
 	}
 }
@@ -65,6 +59,7 @@ func RepoFindCartoonEpisode(id int) Episode {
 	return Episode{}
 }
 
+/*
 func RepoCreateCartoon(c Cartoon) Cartoon {
 	currentId += 1
 	c.Id = currentId
@@ -78,3 +73,4 @@ func RepoCreateCartoonEpisode(e Episode) Episode {
 	episodes = append(episodes, e)
 	return e
 }
+*/
