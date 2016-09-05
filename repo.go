@@ -3,6 +3,8 @@ package main
 import (
 	"fmt"
 
+	"log"
+
 	"github.com/boltdb/bolt"
 )
 
@@ -35,7 +37,7 @@ func init() {
 		for k, v := cursorIterateOverBolt.First(); k != nil; k, v = cursorIterateOverBolt.Next() {
 			fmt.Printf("key=%s, value=%s\n", k, v)
 
-			RepoCreateCartoonEpisode(Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print), Episode_share_URL: ("http://dilbert.com/strip/" + dilbert_episode_name_print)})
+			RepoCreateCartoonEpisode(Episode{Name: v, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
 		}
 
 		return nil
