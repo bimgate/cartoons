@@ -30,7 +30,7 @@ func init() {
 		//Episode{Name: dilbert_episode_name_print, Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/" + dilbert_episode_name_print), Episode_share_URL: ("http://dilbert.com/strip/" + dilbert_episode_name_print)}
 
 		///////////////////////////////////vadi iz bazu
-		return dilbert_episode_name_print
+
 	}
 }
 
