@@ -35,7 +35,7 @@ func init() {
 		b.ForEach(func(k, v []byte) error {
 			fmt.Printf("key=%s, value=%s\n", k, v)
 
-			RepoCreateCartoonEpisode(Episode{Name: "test", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
+			RepoCreateCartoonEpisode(Episode{Name: "test-1", Episode_URL: ("http://cartoons-bimgate.rhcloud.com/static/"), Episode_share_URL: ("http://dilbert.com/strip/")})
 
 			return nil
 		})
