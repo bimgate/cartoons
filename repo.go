@@ -17,9 +17,9 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
-	for i, e := range episodes {
+	for _, e := range episodes {
 
-		key := (string(i))
+		key := (string(1))
 
 		dilbert_episode_name := db.Get("dilbert", key)
 
