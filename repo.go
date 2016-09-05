@@ -8,6 +8,7 @@ import (
 
 var cartoons Cartoons
 var episodes Episodes
+var dilbert_episode_name_print string
 
 func RepoFindCartoonEpisode(id int) string {
 
