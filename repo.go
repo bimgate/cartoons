@@ -9,7 +9,7 @@ import (
 var cartoons Cartoons
 var episodes Episodes
 
-func RepoFindCartoonEpisode(id int) Episode {
+func RepoFindCartoonEpisode(id int) string {
 
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
