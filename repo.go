@@ -14,10 +14,10 @@ func RepoFindCartoonEpisode(id int) Episode {
 	/////////////////////////////////////vadi iz bazu
 	databaseName := "my-database-dilbert-name.db"
 	db := nutz.NewStorage(databaseName, 0600, nil)
-	for _, e := range episodes {
+	for i, e := range episodes {
 		if e.Id == id {
 
-			key := (string(e))
+			key := (string(i))
 
 			dilbert_episode_name := db.Get("dilbert", key)
 
