@@ -12,21 +12,19 @@ var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
+var databaseName = "my-database-dilbert-name.db"
+var db, _ = bolt.Open(databaseName, 0600, nil)
+
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 
 }
 
-func main() {
+func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
-	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
 
 	db.View(func(tx *bolt.Tx) error {
 		// Assume bucket exists and has keys
