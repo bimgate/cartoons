@@ -26,7 +26,7 @@ func init() {
 
 	db.View(func(tx *bolt.Tx) error {
 		b := tx.Bucket([]byte("MyBucket"))
-		v := b.Get([]byte(1))
+		v := b.Get([]byte("2"))
 		fmt.Printf("The answer is: %s\n", v)
 		return nil
 	})
