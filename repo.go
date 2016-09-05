@@ -25,7 +25,7 @@ func init() {
 	//Open DB
 
 	db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte("MyBucket"))
+		b := tx.Bucket([]byte("dilbert"))
 		v := b.Get([]byte("2"))
 		fmt.Printf("The answer is: %s\n", v)
 		return nil
