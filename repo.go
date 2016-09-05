@@ -25,6 +25,13 @@ func RepoFindCartoon(id int) Cartoon {
 	return Cartoon{}
 }
 
+func RepoCreateCartoon(c Cartoon) Cartoon {
+	currentId += 1
+	c.Id = currentId
+	cartoons = append(cartoons, c)
+	return c
+}
+
 func RepoFindCartoonEpisode(id int) Episode {
 
 	/////////////////////////////////////vadi iz bazu
