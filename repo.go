@@ -23,13 +23,18 @@ func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
+	for i := 1; i < 10; i++ {
 
-	db.View(func(tx *bolt.Tx) error {
-		b := tx.Bucket([]byte("dilbert"))
-		v := b.Get([]byte("2"))
-		fmt.Printf("The answer is: %s\n", v)
-		return nil
-	})
+		db := nutz.NewStorage(databaseName, 0600, nil)
+
+		n := db.Get("dilbert", i)
+
+		m := (string(n.Data))
+
+		fmt.Println(m)
+
+		RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/", Episode_share_URL: "SHARE_URL"})
+	}
 }
 
 func RepoCreateCartoonEpisode(e Episode) Episode {
