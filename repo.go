@@ -45,7 +45,7 @@ func init() {
 
 			fmt.Println(m)
 
-			RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/", Episode_share_URL: "SHARE_URL"})
+			RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/xzy", Episode_share_URL: "SHARE_URL"})
 			return nil
 		})
 
