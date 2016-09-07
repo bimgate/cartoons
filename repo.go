@@ -40,7 +40,7 @@ func init() {
 			val := bucket.Get([]byte("1"))
 			fmt.Println(string(val))
 
-			RepoCreateCartoonEpisode(Episode{Name: "VREDNOST TEST", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+			RepoCreateCartoonEpisode(Episode{Name: "vtest", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
 			return nil
 		})
