@@ -33,15 +33,14 @@ func RepoCreateCartoonEpisode(e Episode) Episode {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
-	for i := 1; i < 10; i++ {
-		databaseName := "my-1-database-dilbert-name.db"
-		db := nutz.NewStorage(databaseName, 0600, nil)
 
-		n := db.Get("dilbert", "11")
+	databaseName := "my-1-database-dilbert-name.db"
+	db := nutz.NewStorage(databaseName, 0600, nil)
 
-		m := (string(n.Data))
-		val_print = fmt.Sprintf("%s", m)
-	}
+	n := db.Get("dilbert", "11")
+
+	m := (string(n.Data))
+	val_print = fmt.Sprintf("%s", m)
 
 	currentId += 1
 	e.Id = currentId
