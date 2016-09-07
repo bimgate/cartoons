@@ -37,7 +37,10 @@ func initu() {
 
 		// retrieve the data
 		db.View(func(tx *bolt.Tx) error {
-			b := tx.Bucket([]byte("dilbert"))
+
+			dil_bu := []byte("dilbert")
+
+			b, _ := tx.CreateBucketIfNotExists(dil_bu)
 
 			v_string := strconv.Itoa(i)
 
