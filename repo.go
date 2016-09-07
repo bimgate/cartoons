@@ -33,6 +33,7 @@ func init() {
 		// retrieve the data
 		db.View(func(tx *bolt.Tx) error {
 			b := tx.Bucket([]byte("dilbert"))
+
 			v := b.Get([]byte("21"))
 
 			val_print = fmt.Sprintf("%s", v)

@@ -17,7 +17,7 @@ import (
 )
 
 var dilbert_bolt_id int = 1
-var db, _ = bolt.Open("my-2-database-dilbert-name.db", 0600, nil)
+var db, _ = bolt.Open("my-3-database-dilbert-name.db", 0600, nil)
 
 func collect_dilbert() {
 
