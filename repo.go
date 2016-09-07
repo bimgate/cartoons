@@ -37,7 +37,7 @@ func init() {
 
 		i_to_string := strconv.Itoa(i)
 		db.View(func(tx *bolt.Tx) error {
-			b := tx.Bucket([]byte("dilbert"))
+			b := tx.Bucket([]byte(dilbertBucket))
 			v := b.Get([]byte(i_to_string))
 			//fmt.Printf("The answer is: %s\n", v)
 
