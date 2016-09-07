@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	"log"
+	//"log"
 	"strconv"
 
 	"github.com/boltdb/bolt"
