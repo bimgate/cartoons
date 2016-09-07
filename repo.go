@@ -29,7 +29,11 @@ func init() {
 	//Open DB
 	for i := 1; i < 10; i++ {
 
-		db := nutz.NewStorage(databaseName, 0600, nil)
+		db, err := nutz.NewStorage(databaseName, 0600, nil)
+
+		if err != nil {
+			log.Fatal(err)
+		}
 
 		i_to_string := strconv.Itoa(i)
 		n := db.Get("dilbert", i_to_string)
