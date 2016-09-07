@@ -17,13 +17,14 @@ var episodes Episodes
 
 var val_print string
 
+/*
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
 
 }
-
-func initu() {
+*/
+func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
