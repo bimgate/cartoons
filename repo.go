@@ -15,6 +15,8 @@ var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
+var val_print string
+
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "xkcd", Number_of_Episodes: 100, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/xkcd/"})
@@ -29,24 +31,15 @@ func init() {
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
-		db.View(func(tx *bolt.Tx) /*error*/ {
-
-			dilb_bucket := []byte("dilbert")
-
-			bucket := tx.Bucket(dilb_bucket)
-			/*if bucket == nil {
-				return fmt.Errorf("Bucket %q not found!", bucket)
-			}*/
-
-			val := bucket.Get([]byte("1"))
-			val_print := string(val)
-
-			RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
-
-			//return nil
+		db.View(func(tx *bolt.Tx) error {
+			b := tx.Bucket([]byte("dilbert"))
+			v := b.Get([]byte("21"))
+			val_print = v
+			fmt.Printf("%sn", v)
+			return nil
 		})
 
-		//	RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+		RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
 	}
 }
