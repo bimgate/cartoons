@@ -40,10 +40,6 @@ func get_dilbert() {
 		log.Fatal(err)
 	}
 
-	_, err = io.Copy(file_b, response.Body)
-	if err != nil {
-		log.Fatal(err)
-	}
 	file_b.Close()
 	fmt.Println("Success!")
 
