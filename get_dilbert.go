@@ -22,11 +22,26 @@ var dilbertBucket = "dilbert"
 func get_dilbert() {
 
 	//Open DB
-	db, err := bolt.Open(tmp/"my-database-dilbert-name.db", 0600, nil)
+	//open a file for writing
+	file_path_bolt := "./tmp/%v"
+
+	db, err := bolt.Open(file/"my-database-dilbert-name.db", 0600, nil)
 
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	///////////////////////////////
+
+	f_path_b := fmt.Sprintf(file_path, db)
+
+	file, err := os.Create(f_path_b)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	///////////////////////////////
+
 	defer db.Close()
 
 	// set the starting date (in any way you wish)
