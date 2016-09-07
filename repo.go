@@ -4,6 +4,8 @@ import (
 	"fmt"
 
 	//"github.com/boltdb/bolt"
+	"strconv"
+
 	"github.com/gernest/nutz"
 )
 
@@ -28,7 +30,8 @@ func init() {
 
 		db := nutz.NewStorage(databaseName, 0600, nil)
 
-		n := db.Get("dilbert", i)
+		i_to_string := strconv.Itoa(i)
+		n := db.Get("dilbert", i_to_string)
 
 		m := (string(n.Data))
 
