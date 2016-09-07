@@ -58,7 +58,7 @@ func collect_dilbert() {
 
 		dilb_bucket := []byte("dilbert")
 
-		err = db.Update(func(tx *bolt.Tx) error {
+		err := db.Update(func(tx *bolt.Tx) error {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
 
 			err := bucket.Put([]byte(strconv.Itoa(key)), []byte(value))
