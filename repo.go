@@ -28,7 +28,7 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
 
-	db, err := bolt.Open("./my-1-database-dilbert-name.db", 0644, nil)
+	db, err := bolt.Open("./my-2-database-dilbert-name.db", 0644, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
