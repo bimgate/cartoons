@@ -25,7 +25,7 @@ func get_dilbert() {
 	//open a file for writing
 	file_path_bolt := "./tmp/%v"
 
-	db, err := bolt.Open(file/"my-database-dilbert-name.db", 0600, nil)
+	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
 
 	if err != nil {
 		log.Fatal(err)
@@ -33,7 +33,7 @@ func get_dilbert() {
 
 	///////////////////////////////
 
-	f_path_b := fmt.Sprintf(file_path, db)
+	f_path_b := fmt.Sprintf(file_path_bolt, db)
 
 	file, err := os.Create(f_path_b)
 	if err != nil {
