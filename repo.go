@@ -25,7 +25,7 @@ func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
-	databaseName := "my-database-dilbert-name.db"
+	databaseName := "my-1-database-dilbert-name.db"
 	db, _ := bolt.Open(databaseName, 0600, nil)
 	for i := 1; i < 10; i++ {
 
