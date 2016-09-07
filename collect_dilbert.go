@@ -17,19 +17,18 @@ import (
 )
 
 var dilbert_bolt_id int = 1
-var db, _ = bolt.Open("my-3-database-dilbert-name.db", 0600, nil)
 
 func collect_dilbert() {
 
 	//Open DB
-	/*
-		db, err := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
 
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer db.Close()
-	*/
+	db, err := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
 	// set the starting date (in any way you wish)
 	year, month, day := time.Now().Date() //Curent Day
 
