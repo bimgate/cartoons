@@ -17,34 +17,15 @@ import (
 )
 
 var dilbert_bolt_id int = 1
-var dilbertBucket = "dilbert"
 
 func get_dilbert() {
 
 	//Open DB
-	//open a file for writing
-	file_path_bolt := "./%v"
-
 	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
 
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	///////////////////////////////
-
-	f_path_b := fmt.Sprintf(file_path_bolt, db)
-
-	file_b, err := os.Create(f_path_b)
-	if err != nil {
-		log.Fatal(err)
-	}
-
-	file_b.Close()
-	fmt.Println("Success!")
-
-	///////////////////////////////
-
 	defer db.Close()
 
 	// set the starting date (in any way you wish)
@@ -73,7 +54,7 @@ func get_dilbert() {
 		key := dilbert_bolt_id
 		value := u
 
-		dilb_bucket := []byte(dilbertBucket)
+		dilb_bucket := []byte("dilbert")
 
 		err = db.Update(func(tx *bolt.Tx) error {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)

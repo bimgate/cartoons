@@ -33,7 +33,7 @@ func init() {
 		// retrieve the data
 		_ = db.View(func(tx *bolt.Tx) error {
 
-			dilb_bucket := []byte(dilbertBucket)
+			dilb_bucket := []byte("dilbert")
 
 			bucket := tx.Bucket(dilb_bucket)
 			if bucket == nil {
