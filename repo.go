@@ -28,13 +28,13 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
 
-	db, err := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
-
-	if err != nil {
-		log.Fatal(err)
-	}
-	defer db.Close()
-
+	db, _ := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
+	/*
+		if err != nil {
+			log.Fatal(err)
+		}
+		defer db.Close()
+	*/
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
