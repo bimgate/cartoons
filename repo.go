@@ -1,15 +1,13 @@
 package main
 
-import (
-	"fmt"
+//"fmt"
 
-	//"log"
-	//"strconv"
+//"log"
+//"strconv"
 
-	"github.com/boltdb/bolt"
+//"github.com/boltdb/bolt"
 
-	//"github.com/gernest/nutz"
-)
+//"github.com/gernest/nutz"
 
 var currentId int
 var cartoons Cartoons
@@ -46,7 +44,7 @@ func init() {
 				return nil
 			})
 		*/
-		RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+		RepoCreateCartoonEpisode(Episode{Name: "TEST-TEST", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
 	}
 }
