@@ -41,7 +41,9 @@ func init() {
 		db.View(func(tx *bolt.Tx) error {
 			b := tx.Bucket([]byte("dilbert"))
 
-			v := b.Get([]byte("21"))
+			v_string := strconv.Itoa(i)
+
+			v := b.Get([]byte(v_string))
 
 			val_print = fmt.Sprintf("%s", v)
 			return nil
