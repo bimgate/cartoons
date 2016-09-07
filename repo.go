@@ -3,7 +3,8 @@ package main
 import (
 	"fmt"
 
-	"strconv"
+	"log"
+	//"strconv"
 
 	"github.com/boltdb/bolt"
 
@@ -41,7 +42,7 @@ func init() {
 			//fmt.Printf("The answer is: %s\n", v)
 			return nil
 
-			m := strconv.Itoa(v)
+			m := string(v)
 
 			fmt.Println(m)
 
