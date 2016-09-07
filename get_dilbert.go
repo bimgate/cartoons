@@ -22,7 +22,7 @@ var dilbertBucket = "dilbert"
 func get_dilbert() {
 
 	//Open DB
-	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
+	db, err := bolt.Open(tmp/"my-database-dilbert-name.db", 0600, nil)
 
 	if err != nil {
 		log.Fatal(err)
