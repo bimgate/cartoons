@@ -27,26 +27,26 @@ func init() {
 	//Open DB
 
 	for i := 1; i < 10; i++ {
+		/*
+			// retrieve the data
+			_ = db.View(func(tx *bolt.Tx) error {
 
-		// retrieve the data
-		_ = db.View(func(tx *bolt.Tx) error {
+				dilb_bucket := []byte("dilbert")
 
-			dilb_bucket := []byte("dilbert")
+				bucket := tx.Bucket(dilb_bucket)
+				if bucket == nil {
+					return fmt.Errorf("Bucket %q not found!", bucket)
+				}
 
-			bucket := tx.Bucket(dilb_bucket)
-			if bucket == nil {
-				return fmt.Errorf("Bucket %q not found!", bucket)
-			}
+				val := bucket.Get([]byte("1"))
+				fmt.Println(string(val))
 
-			val := bucket.Get([]byte("1"))
-			fmt.Println(string(val))
+				RepoCreateCartoonEpisode(Episode{Name: "vtest", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
-			RepoCreateCartoonEpisode(Episode{Name: "vtest", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
-
-			return nil
-		})
-
-		//	RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+				return nil
+			})
+		*/
+		RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
 	}
 }
