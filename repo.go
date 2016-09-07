@@ -12,7 +12,7 @@ var cartoons Cartoons
 var episodes Episodes
 
 var databaseName = "my-database-dilbert-name.db"
-var db := nutz.NewStorage(databaseName, 0600, nil)
+var db = nutz.NewStorage(databaseName, 0600, nil)
 
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
