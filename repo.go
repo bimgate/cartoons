@@ -28,7 +28,7 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
 
-	db, err := bolt.Open("./my-2-database-dilbert-name.db", 0644, nil)
+	db, err := bolt.Open("my-2-database-dilbert-name.db", 0644, nil)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -38,7 +38,7 @@ func init() {
 		// retrieve the data
 		db.View(func(tx *bolt.Tx) error {
 
-			dil_bu := []byte("dilbert")
+			dil_bu := []byte("dilbert-2")
 
 			b, _ := tx.CreateBucketIfNotExists(dil_bu)
 
