@@ -38,10 +38,10 @@ func init() {
 		db.View(func(tx *bolt.Tx) error {
 			b := tx.Bucket([]byte("dilbert"))
 			v := b.Get([]byte(i_to_string))
-			fmt.Printf("The answer is: %s\n", v)
+			//fmt.Printf("The answer is: %s\n", v)
 			return nil
 
-			m := (string(v.Data))
+			m := strconv.Itoa(v)
 
 			fmt.Println(m)
 
