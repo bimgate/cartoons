@@ -18,7 +18,7 @@ import (
 
 var dilbert_bolt_id int = 1
 
-func get_dilbert() {
+func collect_dilbert() {
 
 	//Open DB
 	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)

@@ -36,7 +36,7 @@ func CartoonEpisodesIndex(w http.ResponseWriter, r *http.Request) {
 
 func DownloadCartoon(w http.ResponseWriter, r *http.Request) {
 	//
-	get_dilbert()
+	collect_dilbert()
 
 	//
 
