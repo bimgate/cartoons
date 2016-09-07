@@ -17,7 +17,7 @@ import (
 )
 
 var dilbert_bolt_id int = 1
-var dilbertBucket = "dilbert"
+var dilbertBucket = []byte("dilbert")
 
 func get_dilbert() {
 
@@ -73,7 +73,7 @@ func get_dilbert() {
 		key := dilbert_bolt_id
 		value := u
 
-		dilb_bucket := []byte(dilbertBucket)
+		dilb_bucket := dilbertBucket
 
 		err = db.Update(func(tx *bolt.Tx) error {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
