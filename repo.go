@@ -23,7 +23,7 @@ func init() {
 
 }
 
-func initu() {
+func init() {
 
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
