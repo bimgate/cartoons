@@ -37,7 +37,7 @@ func init() {
 				return fmt.Errorf("Bucket %q not found!", dilbertBucket)
 			}
 
-			val := bucket.Get("1")
+			val := bucket.Get([]byte("1"))
 			fmt.Println(string(val))
 
 			RepoCreateCartoonEpisode(Episode{Name: "VREDNOST TEST", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
