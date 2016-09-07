@@ -32,9 +32,9 @@ func init() {
 
 		// retrieve the data
 		_ = db.View(func(tx *bolt.Tx) error {
-			bucket := tx.Bucket(dilbertBucket)
+			bucket := tx.Bucket(byte[](dilbertBucket))
 			if bucket == nil {
-				return fmt.Errorf("Bucket %q not found!", dilbertBucket)
+				return fmt.Errorf("Bucket %q not found!", bucket)
 			}
 
 			val := bucket.Get([]byte("1"))
