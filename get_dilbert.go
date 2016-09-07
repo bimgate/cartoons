@@ -23,7 +23,7 @@ func get_dilbert() {
 
 	//Open DB
 	//open a file for writing
-	file_path_bolt := "./tmp/%v"
+	file_path_bolt := "./%v"
 
 	db, err := bolt.Open("my-database-dilbert-name.db", 0600, nil)
 
