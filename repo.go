@@ -29,14 +29,14 @@ func init() {
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
-		_ = db.View(func(tx *bolt.Tx) /*error*/ {
+		db.View(func(tx *bolt.Tx) /*error*/ {
 
 			dilb_bucket := []byte("dilbert")
 
 			bucket := tx.Bucket(dilb_bucket)
-			if bucket == nil {
+			/*if bucket == nil {
 				return fmt.Errorf("Bucket %q not found!", bucket)
-			}
+			}*/
 
 			val := bucket.Get([]byte("1"))
 			val_print := string(val)
