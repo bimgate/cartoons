@@ -31,7 +31,7 @@ func init() {
 		databaseName := "my-1-database-dilbert-name.db"
 		db := nutz.NewStorage(databaseName, 0600, nil)
 
-		n := db.Get("dilb", "1")
+		n := db.Get("dilbert", "1")
 
 		m := (string(n.Data))
 		val_print = fmt.Sprintf("%s", m)
