@@ -14,7 +14,7 @@ var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
-var databaseName = "my-database-dilbert-name.db"
+var databaseName = "./my-database-dilbert-name.db"
 var db = nutz.NewStorage(databaseName, 0600, nil)
 
 func init() {
