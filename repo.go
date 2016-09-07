@@ -40,14 +40,13 @@ func init() {
 			b := tx.Bucket([]byte("dilbert"))
 			v := b.Get([]byte(i_to_string))
 			//fmt.Printf("The answer is: %s\n", v)
-			return nil
 
 			m := string(v)
 
 			fmt.Println(m)
 
 			RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/", Episode_share_URL: "SHARE_URL"})
-
+			return nil
 		})
 
 	}
