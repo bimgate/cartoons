@@ -29,7 +29,7 @@ func init() {
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
-		_ = db.View(func(tx *bolt.Tx) error {
+		_ = db.View(func(tx *bolt.Tx) /*error*/ {
 
 			dilb_bucket := []byte("dilbert")
 
