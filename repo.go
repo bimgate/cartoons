@@ -3,7 +3,7 @@ package main
 import (
 	"fmt"
 
-	//"log"
+	"log"
 	"strconv"
 
 	"github.com/boltdb/bolt"
@@ -28,13 +28,11 @@ func init() {
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
 
-	db, _ := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
-	/*
-		if err != nil {
-			log.Fatal(err)
-		}
-		defer db.Close()
-	*/
+	db, err := bolt.Open("./my-1-database-dilbert-name.db", 0644, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
