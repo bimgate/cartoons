@@ -35,10 +35,17 @@ func get_dilbert() {
 
 	f_path_b := fmt.Sprintf(file_path_bolt, db)
 
-	file, err := os.Create(f_path_b)
+	file_b, err := os.Create(f_path_b)
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	_, err = io.Copy(file_b, response.Body)
+	if err != nil {
+		log.Fatal(err)
+	}
+	file_b.Close()
+	fmt.Println("Success!")
 
 	///////////////////////////////
 
