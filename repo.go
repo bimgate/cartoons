@@ -35,7 +35,7 @@ func init() {
 			b := tx.Bucket([]byte("dilbert"))
 			v := b.Get([]byte("21"))
 
-			val_print = fmt.Printf("%s", v)
+			val_print, _ = fmt.Printf("%s", v)
 			return nil
 		})
 
