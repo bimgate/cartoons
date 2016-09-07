@@ -3,18 +3,19 @@ package main
 import (
 	"fmt"
 
+	"log"
 	"strconv"
 
-	//"github.com/boltdb/bolt"
+	"github.com/boltdb/bolt"
 
-	"github.com/gernest/nutz"
+	//"github.com/gernest/nutz"
 )
 
 var currentId int
 var cartoons Cartoons
 var episodes Episodes
 
-var databaseName = "./my-database-dilbert-name.db"
+var databaseName = "my-database-dilbert-name.db"
 var db = nutz.NewStorage(databaseName, 0600, nil)
 
 func init() {
@@ -29,20 +30,23 @@ func init() {
 	//Open DB
 	for i := 1; i < 10; i++ {
 
-		db, err := nutz.NewStorage(databaseName, 0600, nil)
+		// retrieve the data
+		err = db.View(func(tx *bolt.Tx) error {
+			bucket := tx.Bucket(dilbertBucket)
+			if bucket == nil {
+				return fmt.Errorf("Bucket %q not found!", dilbertBucket)
+			}
 
-		if err != nil {
-			log.Fatal(err)
-		}
+			val := bucket.Get(key)
+			fmt.Println(string(val))
 
-		i_to_string := strconv.Itoa(i)
-		n := db.Get("dilbert", i_to_string)
+			RepoCreateCartoonEpisode(Episode{Name: "VREDNOST TEST", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
-		m := (string(n.Data))
+			return nil
+		})
 
-		fmt.Println(m)
+		//	RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 
-		RepoCreateCartoonEpisode(Episode{Name: m, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
 	}
 }
 
