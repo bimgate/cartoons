@@ -16,7 +16,7 @@ var cartoons Cartoons
 var episodes Episodes
 
 var databaseName = "my-database-dilbert-name.db"
-var db = bolt.Open(databaseName, 0600, nil)
+var db, _ = bolt.Open(databaseName, 0600, nil)
 
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
@@ -31,13 +31,13 @@ func init() {
 	for i := 1; i < 10; i++ {
 
 		// retrieve the data
-		err = db.View(func(tx *bolt.Tx) error {
+		_ = db.View(func(tx *bolt.Tx) error {
 			bucket := tx.Bucket(dilbertBucket)
 			if bucket == nil {
 				return fmt.Errorf("Bucket %q not found!", dilbertBucket)
 			}
 
-			val := bucket.Get(key)
+			val := bucket.Get("1")
 			fmt.Println(string(val))
 
 			RepoCreateCartoonEpisode(Episode{Name: "VREDNOST TEST", Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
