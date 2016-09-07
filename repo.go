@@ -25,25 +25,24 @@ func init() {
 
 func init() {
 
+	RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+
+}
+
+func RepoCreateCartoonEpisode(e Episode) Episode {
+
 	/////////////////////////////////////vadi iz bazu
 	//Open DB
 	for i := 1; i < 10; i++ {
 		databaseName := "my-1-database-dilbert-name.db"
 		db := nutz.NewStorage(databaseName, 0600, nil)
 
-		key := []byte("11")
-
-		n := db.Get("dilbert", key)
+		n := db.Get("dilbert", "11")
 
 		m := (string(n.Data))
 		val_print = fmt.Sprintf("%s", m)
-
-		RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
-
 	}
-}
 
-func RepoCreateCartoonEpisode(e Episode) Episode {
 	currentId += 1
 	e.Id = currentId
 	episodes = append(episodes, e)
