@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 
-	"log"
-	"strconv"
+	//"log"
+	//"strconv"
 
 	"github.com/boltdb/bolt"
 
@@ -16,7 +16,7 @@ var cartoons Cartoons
 var episodes Episodes
 
 var databaseName = "my-database-dilbert-name.db"
-var db = nutz.NewStorage(databaseName, 0600, nil)
+var db = bolt.Open(databaseName, 0600, nil)
 
 func init() {
 	RepoCreateCartoon(Cartoon{Bootstrap_URL: "http://cartoons-bimgate.rhcloud.com", Name: "Dilbert", Number_of_Episodes: 120, Episodes_URL: "http://cartoons-bimgate.rhcloud.com/static/dilbert/"})
