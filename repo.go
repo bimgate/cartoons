@@ -34,8 +34,8 @@ func init() {
 		db.View(func(tx *bolt.Tx) error {
 			b := tx.Bucket([]byte("dilbert"))
 			v := b.Get([]byte("21"))
-			val_print = v
-			fmt.Printf("%sn", v)
+
+			val_print = fmt.Printf("%s", v)
 			return nil
 		})
 
