@@ -14,6 +14,8 @@ func main() {
 	fmt.Printf("listening on %s...", bind)
 	err := http.ListenAndServe(bind, router)
 
+	//err := http.ListenAndServe(":9090", router)
+
 	if err != nil {
 		panic(err)
 	}
