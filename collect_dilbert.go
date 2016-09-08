@@ -38,11 +38,11 @@ func collect_dilbert() {
 	start, _ := time.Parse("2006-1-2", startDate)
 	// handle error
 
-	end, _ := time.Parse("2006-1-2", "2015-6-1")
+	end, _ := time.Parse("2006-1-2", "2008-6-1")
 	// handle error
 
 	// set d to starting date and keep adding -1 day to it as long as Year doesn't change
-	for d := start; d.Month() != end.Month(); d = d.AddDate(0, 0, -1) { //Month() or Year()
+	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) { //Month() or Year()
 		// do stuff with d
 
 		u := (d.Format("2006-01-02"))
