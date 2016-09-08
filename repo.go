@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 
-	//"log"
+	"log"
 	//"strconv"
 
-	//"github.com/boltdb/bolt"
+	"github.com/boltdb/bolt"
 
-	"github.com/gernest/nutz"
+	//"github.com/gernest/nutz"
 )
 
 var currentId int
@@ -25,22 +25,37 @@ func init() {
 
 func init() {
 
-	RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/XZY", Episode_share_URL: "SHARE_URL"})
+	/////////////////////////////////////vadi iz bazu
+	//Open DB
+
+	db, err := bolt.Open("my-1-database-dilbert-name.db", 0600, nil)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer db.Close()
+
+	db.View(func(tx *bolt.Tx) error {
+		// Assume bucket exists and has keys
+		b := tx.Bucket([]byte("dilbert"))
+
+		c := b.Cursor()
+
+		for k, v := c.First(); k != nil; k, v = c.Next() {
+			fmt.Printf("key=%s, value=%s\n", k, v)
+
+			val_print = string(v)
+
+			RepoCreateCartoonEpisode(Episode{Name: val_print, Episode_URL: "http://cartoons-bimgate.rhcloud.com/static/" + val_print, Episode_share_URL: "http://dilbert.com/strip/" + val_print})
+
+		}
+
+		return nil
+	})
 
 }
 
 func RepoCreateCartoonEpisode(e Episode) Episode {
-
-	/////////////////////////////////////vadi iz bazu
-	//Open DB
-
-	databaseName := "my-1-database-dilbert-name.db"
-	db := nutz.NewStorage(databaseName, 0600, nil)
-
-	n := db.Get("dilbert", "11")
-
-	m := (string(n.Data))
-	val_print = fmt.Sprintf("%s", m)
 
 	currentId += 1
 	e.Id = currentId
