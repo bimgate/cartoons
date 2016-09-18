@@ -39,10 +39,16 @@ var routes = Routes{
 		DownloadXkcd,
 	},
 	Route{
-		"CartoonEpisodesIndex",
+		"CartoonDilbertEpisodesIndex",
 		"GET",
-		"/cartoons/{cartoonId}/episodes",
-		CartoonEpisodesIndex,
+		"/cartoons/dilbert/episodes",
+		CartoonDilbertEpisodesIndex,
+	},
+	Route{
+		"CartoonXkcdEpisodesIndex",
+		"GET",
+		"/cartoons/xkcd/episodes",
+		CartoonXkcdEpisodesIndex,
 	},
 	Route{
 		"CartoonEpisodeShow",
@@ -51,9 +57,9 @@ var routes = Routes{
 		CartoonEpisodeShow,
 	},
 	Route{
-		"StaticDilbert",
+		"StaticDilbertXkcd",
 		"GET",
 		"/static",
-		StaticDilbert,
+		StaticDilbertXkcd,
 	},
 }

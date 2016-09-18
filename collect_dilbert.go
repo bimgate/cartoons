@@ -16,7 +16,10 @@ import (
 	"github.com/moovweb/gokogiri/xpath"
 )
 
+var next_comic_number_dilbert int
 var dilbert_bolt_id int = 1
+var v_string string
+var u_d_format_to_string string
 
 func collect_dilbert() {
 
@@ -28,26 +31,73 @@ func collect_dilbert() {
 		log.Fatal(err)
 	}
 	defer db.Close()
+	/*
+		//Firstly check if comic exist in Bolt db
+		db.View(func(tx *bolt.Tx) error {
+			//share_link_number_part := strconv.Itoa(i)
+			b := tx.Bucket([]byte("dilbert"))
+			c := b.Cursor()
+
+			for k, v := c.Last(); k != nil; k, v = c.Next() {
+				fmt.Printf("key=%s, value=%s\n", k, v)
+
+				curent_last_comic_name_from_db := string(v)
+				curent_last_comic_name_from_db_to_int, _ := strconv.Atoi(curent_last_comic_name_from_db)
+				next_comic_name_dilbert = curent_last_comic_name_from_db_to_int + //NOVI NAREDNI DATUM a treba staviti i novi startni datum
+
+			}
+
+			return nil
+		})
+	*/
+	//Firstly check if comic exist in Bolt db
 
 	// set the starting date (in any way you wish)
 	year, month, day := time.Now().Date() //Curent Day
 
-	dayPicker := time.Date(year, month, day, 0, 0, 0, 0, time.UTC)
+	dayPicker := time.Date(year, month, day+15, 0, 0, 0, 0, time.UTC)
 
 	startDate := (dayPicker.Format("2006-01-02"))
 	start, _ := time.Parse("2006-1-2", startDate)
+
 	// handle error
 
-	end, _ := time.Parse("2006-1-2", "2008-6-1")
+	end, _ := time.Parse("2006-1-2", "2016-9-11") // "2008-6-1" end_date_updated
 	// handle error
-
+myloop:
 	// set d to starting date and keep adding -1 day to it as long as Year doesn't change
-	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) { //Month() or Year()
+	for d := start; d.Day() != end.Day(); d = d.AddDate(0, 0, -1) { // Day() or Month() or Year() for END
 		// do stuff with d
+
+		//Firstly check if comic exist in Bolt db
+		db.View(func(tx *bolt.Tx) error {
+			//share_link_number_part := strconv.Itoa(i)
+			b := tx.Bucket([]byte("dilbert"))
+			c := b.Cursor()
+
+			for k, v := c.Last(); k != nil; {
+				//fmt.Printf("key=%s, value=%s\n", k, v)
+				u_d_format_to_string = (d.Format("2006-01-02"))
+
+				v_string = string(v)
+
+				fmt.Println("Datumi koji se menjaju" + u_d_format_to_string)
+				fmt.Println("Poslednji datum u bazi sa kojim se uporedjuje ne menja se" + v_string)
+
+			}
+
+			return nil
+		})
+
+		if v_string == u_d_format_to_string {
+			break myloop
+		}
+
+		//Firstly check if comic exist in Bolt db
 
 		u := (d.Format("2006-01-02"))
 
-		fmt.Println(u)
+		//fmt.Println(u)
 
 		page_url := ("http://dilbert.com/strip/" + u)
 		///////////Add to Bolt DB
@@ -61,7 +111,7 @@ func collect_dilbert() {
 			bucket, _ := tx.CreateBucketIfNotExists(dilb_bucket)
 
 			err := bucket.Put([]byte(strconv.Itoa(key)), []byte(value))
-			fmt.Println("dbBolt Works  ", dilbert_bolt_id)
+			//fmt.Println("dbBolt Works  ", dilbert_bolt_id)
 			return err
 
 		})
@@ -112,7 +162,7 @@ func collect_dilbert() {
 				log.Fatal(err)
 			}
 			file.Close()
-			fmt.Println("Success!")
+			//fmt.Println("Success!")
 
 		}
 
