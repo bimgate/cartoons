@@ -31,27 +31,28 @@ func get_xkcd() {
 
 	//At first scrip Start part - Firstly check if comic exist in Bolt db - should to be commented and i in fore loop should have start Number values
 
-	//Firstly check if comic exist in Bolt db
-	db.View(func(tx *bolt.Tx) error {
-		//share_link_number_part := strconv.Itoa(i)
-		b := tx.Bucket([]byte("xkcd"))
-		c := b.Cursor()
+	/*
+		//Firstly check if comic exist in Bolt db
+		db.View(func(tx *bolt.Tx) error {
+			//share_link_number_part := strconv.Itoa(i)
+			b := tx.Bucket([]byte("xkcd"))
+			c := b.Cursor()
 
-		for k, v := c.Last(); k != nil; k, v = c.Next() {
-			fmt.Printf("key=%s, value=%s\n", k, v)
+			for k, v := c.Last(); k != nil; k, v = c.Next() {
+				fmt.Printf("key=%s, value=%s\n", k, v)
 
-			curent_last_comic_number_from_db := string(k)
-			curent_last_comic_number_from_db_to_int, _ := strconv.Atoi(curent_last_comic_number_from_db)
-			next_comic_number_xkcd = curent_last_comic_number_from_db_to_int + 1
+				curent_last_comic_number_from_db := string(k)
+				curent_last_comic_number_from_db_to_int, _ := strconv.Atoi(curent_last_comic_number_from_db)
+				next_comic_number_xkcd = curent_last_comic_number_from_db_to_int + 1
 
-		}
+			}
 
-		return nil
-	})
+			return nil
+		})
 
-	//Firstly check if comic exist in Bolt db
-
-	for i := (next_comic_number_xkcd - 1); i <= next_comic_number_xkcd; i++ {
+		//Firstly check if comic exist in Bolt db
+	*/
+	for i := 1700; i >= 900; i-- { // for i := (next_comic_number_xkcd - 1); i <= next_comic_number_xkcd; i++
 
 		url := "http://xkcd.com/%v/"
 

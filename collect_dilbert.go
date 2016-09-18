@@ -55,45 +55,44 @@ func collect_dilbert() {
 	// set the starting date (in any way you wish)
 	year, month, day := time.Now().Date() //Curent Day
 
-	dayPicker := time.Date(year, month, day+15, 0, 0, 0, 0, time.UTC)
+	dayPicker := time.Date(year, month, day, 0, 0, 0, 0, time.UTC)
 
 	startDate := (dayPicker.Format("2006-01-02"))
 	start, _ := time.Parse("2006-1-2", startDate)
 
 	// handle error
 
-	end, _ := time.Parse("2006-1-2", "2016-9-11") // "2008-6-1" end_date_updated
+	end, _ := time.Parse("2006-1-2", "2013-6-1")
 	// handle error
-myloop:
+
 	// set d to starting date and keep adding -1 day to it as long as Year doesn't change
-	for d := start; d.Day() != end.Day(); d = d.AddDate(0, 0, -1) { // Day() or Month() or Year() for END
+	for d := start; d.Year() != end.Year(); d = d.AddDate(0, 0, -1) { // Day() or Month() or Year() for END
 		// do stuff with d
+		/*
+			//Firstly check if comic exist in Bolt db
+			db.View(func(tx *bolt.Tx) error {
+				//share_link_number_part := strconv.Itoa(i)
+				b := tx.Bucket([]byte("dilbert"))
+				c := b.Cursor()
 
-		//Firstly check if comic exist in Bolt db
-		db.View(func(tx *bolt.Tx) error {
-			//share_link_number_part := strconv.Itoa(i)
-			b := tx.Bucket([]byte("dilbert"))
-			c := b.Cursor()
+				for k, v := c.Last(); k != nil; {
+					//fmt.Printf("key=%s, value=%s\n", k, v)
+					u_d_format_to_string = (d.Format("2006-01-02"))
 
-			for k, v := c.Last(); k != nil; {
-				//fmt.Printf("key=%s, value=%s\n", k, v)
-				u_d_format_to_string = (d.Format("2006-01-02"))
+					v_string = string(v)
 
-				v_string = string(v)
+					fmt.Println("Datumi koji se menjaju" + u_d_format_to_string)
+					fmt.Println("Poslednji datum ne menja se" + v_string)
 
-				fmt.Println("Datumi koji se menjaju" + u_d_format_to_string)
-				fmt.Println("Poslednji datum u bazi sa kojim se uporedjuje ne menja se" + v_string)
+				}
 
-			}
+				return nil
+			})
 
-			return nil
-		})
 
-		if v_string == u_d_format_to_string {
-			break myloop
-		}
 
-		//Firstly check if comic exist in Bolt db
+			//Firstly check if comic exist in Bolt db
+		*/
 
 		u := (d.Format("2006-01-02"))
 
